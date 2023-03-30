@@ -3,8 +3,6 @@ import 'package:bloc_app/sign_in/bloc/signin_bloc.dart';
 import 'package:bloc_app/sign_in/bloc/signin_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -53,7 +51,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         SignInTextChangedEvent(
                             emailcontroller.text, passwordcontroller.text));
                   },
-                  decoration: InputDecoration(hintText: 'Email Address'),
+                  decoration: const InputDecoration(hintText: 'Email Address'),
                 ),
                 const SizedBox(
                   height: 10,
@@ -65,7 +63,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         SignInTextChangedEvent(
                             emailcontroller.text, passwordcontroller.text));
                   },
-                  decoration: InputDecoration(hintText: 'Password'),
+                  decoration: const InputDecoration(hintText: 'Password'),
                 ),
                 const SizedBox(
                   height: 10,
@@ -73,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 BlocBuilder<SignInBloc, SignInState>(
                   builder: (context, state) {
                     if (state is SignInLoadingState) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     }
                     return CupertinoButton(
                       color: (state is SignInValidState)

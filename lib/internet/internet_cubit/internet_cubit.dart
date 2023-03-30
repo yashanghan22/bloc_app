@@ -11,8 +11,11 @@ class InternetCubit extends Cubit<InternetcState> {
   final Connectivity _connectivity = Connectivity();
   StreamSubscription? connectivitySubscription;
   InternetCubit() : super(InternetcState.Initial) {
-    connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen((event) {
+    connectivitySubscription = moniterInternetcubit();
+  }
+
+  StreamSubscription<ConnectivityResult> moniterInternetcubit() {
+    return _connectivity.onConnectivityChanged.listen((event) {
       if (event == ConnectivityResult.mobile ||
           event == ConnectivityResult.wifi) {
         emit(InternetcState.Gained);
@@ -21,6 +24,7 @@ class InternetCubit extends Cubit<InternetcState> {
       }
     });
   }
+
   @override
   Future<void> close() {
     connectivitySubscription?.cancel();
