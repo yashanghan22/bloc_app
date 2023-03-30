@@ -4,7 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInBloc extends Bloc<SignInevent, SignInState> {
-  SignInBloc() : super(SignInInitialState()) {
+  SignInBloc() : super(SignInErrorState('Error')) {
     on<SignInTextChangedEvent>((event, emit) {
       if (EmailValidator.validate(event.emailValue) == false) {
         emit(SignInErrorState('Please enter a valid email address'));
