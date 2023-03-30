@@ -40,6 +40,8 @@ dependencies:
   email_validator: ^2.1.17
   bloc_test: ^9.1.1
   equatable: ^2.0.5
+  hydrated_bloc: ^9.1.0
+  path_provider:
   # test: ^1.24.0
   # test_api: 0.5.0
 
